@@ -3,8 +3,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginForm) {
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            alert('¡Inicio de sesión exitoso!');
-            window.location.href = 'dashboard.html';
-        });
+            event.stopPropagation();
+            if (loginForm.checkValidity()) {
+                // Simulación de un inicio de sesión exitoso
+                window.location.href = 'dashboard.html';
+            }
+            loginForm.classList.add('was-validated');
+        }, false);
     }
 });
